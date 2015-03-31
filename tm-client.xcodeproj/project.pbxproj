@@ -8,23 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		84F862871AC94DB800B292E3 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F862861AC94DB800B292E3 /* main.swift */; };
+		84F8628E1AC94DFA00B292E3 /* room.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8628D1AC94DFA00B292E3 /* room.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		84F862811AC94DB800B292E3 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		84F862831AC94DB800B292E3 /* tm-client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "tm-client"; sourceTree = BUILT_PRODUCTS_DIR; };
+		84F862831AC94DB800B292E3 /* todaysmeet */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = todaysmeet; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F862861AC94DB800B292E3 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		84F8628D1AC94DFA00B292E3 /* room.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = room.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +39,7 @@
 		84F862841AC94DB800B292E3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				84F862831AC94DB800B292E3 /* tm-client */,
+				84F862831AC94DB800B292E3 /* todaysmeet */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,6 +48,7 @@
 			isa = PBXGroup;
 			children = (
 				84F862861AC94DB800B292E3 /* main.swift */,
+				84F8628D1AC94DFA00B292E3 /* room.swift */,
 			);
 			path = "tm-client";
 			sourceTree = "<group>";
@@ -71,7 +62,7 @@
 			buildPhases = (
 				84F8627F1AC94DB800B292E3 /* Sources */,
 				84F862801AC94DB800B292E3 /* Frameworks */,
-				84F862811AC94DB800B292E3 /* CopyFiles */,
+				8484D70C1ACA3FC200D6F876 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -79,7 +70,7 @@
 			);
 			name = "tm-client";
 			productName = "tm-client";
-			productReference = 84F862831AC94DB800B292E3 /* tm-client */;
+			productReference = 84F862831AC94DB800B292E3 /* todaysmeet */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -113,11 +104,28 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8484D70C1ACA3FC200D6F876 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp  -r ${TARGET_BUILD_DIR}/todaysmeet ${SRCROOT}/";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		84F8627F1AC94DB800B292E3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F8628E1AC94DFA00B292E3 /* room.swift in Sources */,
 				84F862871AC94DB800B292E3 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -203,14 +211,14 @@
 		84F8628B1AC94DB800B292E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = todaysmeet;
 			};
 			name = Debug;
 		};
 		84F8628C1AC94DB800B292E3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = todaysmeet;
 			};
 			name = Release;
 		};
@@ -233,6 +241,7 @@
 				84F8628C1AC94DB800B292E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
