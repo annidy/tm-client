@@ -9,7 +9,7 @@
 import Foundation
 
 class TodaysMeetRoom {
-    var roomId:Int32 = 0
+    var roomId = 0
     var roomName = ""
     var senderName: String
 
@@ -20,8 +20,8 @@ class TodaysMeetRoom {
     }
     
     func connectRoom() -> Bool {
-        var url = NSURL(string:"https://todaysmeet.com/\(roomName)")!
-        var request = NSURLRequest(URL: url)
+        let url = NSURL(string:"https://todaysmeet.com/\(roomName)")!
+        let request = NSURLRequest(URL: url)
         var respons: NSURLResponse?
         var error: NSError?
         var body = NSURLConnection.sendSynchronousRequest(request, returningResponse:&respons, error:&error)
@@ -46,7 +46,7 @@ class TodaysMeetRoom {
                 scanner = NSScanner(string: roomStr!)
                 scanner.charactersToBeSkipped = NSCharacterSet.decimalDigitCharacterSet().invertedSet
                 while !scanner.atEnd {
-                    if (scanner.scanInt(&roomId)) {
+                    if (scanner.scanInteger(&roomId)) {
                         return true
                     }
                 }
@@ -65,17 +65,19 @@ class TodaysMeetRoom {
             println("not connect")
             return false
         }
-        var url = NSURL(string: "https://todaysmeet.com/api/room/\(roomId)/post")!
-        var cookies:NSArray? = NSHTTPCookieStorage.sharedHTTPCookieStorage().cookiesForURL(url)
+        let url = NSURL(string: "https://todaysmeet.com/api/room/\(roomId)/post")!
 
         var csrftoken: NSString?
-        for ck in cookies! {
-            if ck.name == "csrftoken" {
-                csrftoken = ck.value
+        if let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage().cookiesForURL(url) {
+            for ck in cookies {
+                if ck.name == "csrftoken" {
+                    csrftoken = ck.value
+                }
             }
         }
         if csrftoken == nil {
             println("inner error")
+            return false
         }
         
         var postRequest = NSMutableURLRequest(URL: url)
@@ -83,29 +85,28 @@ class TodaysMeetRoom {
         postRequest.HTTPMethod = "POST"
         postRequest.addValue("https://todaysmeet.com/\(roomId)", forHTTPHeaderField: "referer")
         postRequest.HTTPBody = body.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
-        var result = NSURLConnection.sendSynchronousRequest(postRequest, returningResponse: nil, error: nil)
-        if result != nil {
-            println(NSString(data: result!, encoding: NSUTF8StringEncoding))
+        if let result = NSURLConnection.sendSynchronousRequest(postRequest, returningResponse: nil, error: nil) {
+            println(NSString(data: result, encoding: NSUTF8StringEncoding))
         }
         return true
     }
     
     func listMessages(_ since: Int = 0, maxMessage aMax: Int = 40) -> AnyObject? {
-        var url = NSURL(string: "https://todaysmeet.com/api/room/\(roomId)/messages?since=\(since)&max=\(aMax)")!
-        var request = NSURLRequest(URL: url)
+        let url = NSURL(string: "https://todaysmeet.com/api/room/\(roomId)/messages?since=\(since)&max=\(aMax)")!
+        let request = NSURLRequest(URL: url)
         var respons: NSURLResponse?
         var error: NSError?
-        var body = NSURLConnection.sendSynchronousRequest(request, returningResponse:&respons, error:&error)
+        let body = NSURLConnection.sendSynchronousRequest(request, returningResponse:&respons, error:&error)
         if body == nil {
             println("request \(url) failed. \(error)")
             return nil
         }
         
-        var jsonValue = NSJSONSerialization.JSONObjectWithData(body!, options: NSJSONReadingOptions.MutableContainers, error: &error) as [String:AnyObject]?
-        if error != nil {
-            println("bad json msg. \(error)")
-            return nil
+        if let jsonValue = NSJSONSerialization.JSONObjectWithData(body!, options: NSJSONReadingOptions.MutableContainers, error: &error) as [String:AnyObject]? {
+            return jsonValue["messages"]
         }
-        return jsonValue!["messages"]
+
+        println("bad json msg. \(error)")
+        return nil
     }
 }

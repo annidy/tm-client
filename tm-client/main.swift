@@ -52,7 +52,7 @@ if room == nil {
     usage()
 }
 
-var tmRoom = TodaysMeetRoom(room!)
+let tmRoom = TodaysMeetRoom(room!)
 if senderName != nil {
     tmRoom.senderName = senderName!
 }
@@ -66,9 +66,8 @@ if postText != nil {
 }
 
 if listFlag {
-    var messages = tmRoom.listMessages(0, maxMessage: 20) as [AnyObject]?
-    if messages != nil {
-        var sortedMessages = sorted(messages!) { (s1: AnyObject, s2: AnyObject) -> Bool in
+    if let messages = tmRoom.listMessages(0, maxMessage: 20) as [AnyObject]? {
+        var sortedMessages = sorted(messages) { (s1: AnyObject, s2: AnyObject) -> Bool in
             var d1 = s1["created"] as String
             var d2 = s2["created"] as String
             return d1 > d2
