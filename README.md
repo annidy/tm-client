@@ -2,7 +2,7 @@ Todaysmeet
 ===
 
 
-This is a clinet for mac which your can put/list text on [https://todaysmeet.com](https://todaysmeet.com).
+This is a client for mac which your can put/list text on [https://todaysmeet.com](https://todaysmeet.com).
 
 First, your need create a room on the website, for example _swift_, then anyone can access with url [https://todaysmeet.com/swift](https://todaysmeet.com/swift) and chat now!
 
@@ -19,6 +19,8 @@ Usage
 ---
 
 ```
+todaysmeet -m room [-l] [-s sender] [post message]
+
 Example:
 	todaysmeet -m 'swift' text ;Post text to the room swift
 	todaysmeet -m 'swift' -l   ;List message in the room swift
