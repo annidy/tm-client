@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "84F862821AC94DB800B292E3"
-               BuildableName = "tm-client"
+               BuildableName = "todaysmeet"
                BlueprintName = "tm-client"
                ReferencedContainer = "container:tm-client.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "84F862821AC94DB800B292E3"
-            BuildableName = "tm-client"
+            BuildableName = "todaysmeet"
             BlueprintName = "tm-client"
             ReferencedContainer = "container:tm-client.xcodeproj">
          </BuildableReference>
@@ -52,18 +52,14 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "84F862821AC94DB800B292E3"
-            BuildableName = "tm-client"
+            BuildableName = "todaysmeet"
             BlueprintName = "tm-client"
             ReferencedContainer = "container:tm-client.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-m &apos;roomswift&apos;"
-            isEnabled = "YES">
-         </CommandLineArgument>
-         <CommandLineArgument
-            argument = "Swift"
+            argument = "-m &apos;swift&apos;"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
@@ -80,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "84F862821AC94DB800B292E3"
-            BuildableName = "tm-client"
+            BuildableName = "todaysmeet"
             BlueprintName = "tm-client"
             ReferencedContainer = "container:tm-client.xcodeproj">
          </BuildableReference>

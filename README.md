@@ -25,4 +25,5 @@ Example:
 	todaysmeet -m 'swift' text ;Post text to the room swift
 	todaysmeet -m 'swift' -l   ;List message in the room swift
 	todaysmeet -m 'swift' -s 'jack' text   ;Post text with sender name jack
+	echo '你好' | todaysmeet -m 'swift'	;Post text from stdin
 ```

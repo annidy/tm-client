@@ -13,6 +13,7 @@ class TodaysMeetRoom {
     var roomName = ""
     var senderName: String
 
+    let maxTextCount = 140
     
     init(_ room: NSString, sender aSender: String = "robot"){
         roomName = room
@@ -57,7 +58,7 @@ class TodaysMeetRoom {
     }
     
     func post(text: String) -> Bool {
-        if countElements(text) > 140 {
+        if countElements(text) > maxTextCount {
             println("too much words")
             return false
         }

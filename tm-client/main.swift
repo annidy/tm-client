@@ -61,10 +61,6 @@ if tmRoom.connectRoom() == false {
     exit(1)
 }
 
-if postText != nil {
-    tmRoom.post(postText!)
-}
-
 if listFlag {
     if let messages = tmRoom.listMessages(0, maxMessage: 20) as [AnyObject]? {
         var sortedMessages = sorted(messages) { (s1: AnyObject, s2: AnyObject) -> Bool in
@@ -79,4 +75,19 @@ if listFlag {
             println("\(created) \(sender_name): \(message)")
         }
     }
+    exit(0)
 }
+
+if postText == nil {
+    var buffer = UnsafeMutablePointer<Int8>.alloc(tmRoom.maxTextCount)
+    while true {
+        var pstr = fgets(buffer, Int32(tmRoom.maxTextCount-1), stdin)
+        if pstr != nil {
+            let text = String.fromCString(pstr)!
+            tmRoom.post(text)
+        } else {
+            exit(0)
+        }
+    }
+}
+tmRoom.post(postText!)

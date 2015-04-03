@@ -211,6 +211,7 @@
 		84F8628B1AC94DB800B292E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				PRODUCT_NAME = todaysmeet;
 			};
 			name = Debug;
@@ -218,6 +219,7 @@
 		84F8628C1AC94DB800B292E3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				PRODUCT_NAME = todaysmeet;
 			};
 			name = Release;
